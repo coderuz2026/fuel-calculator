@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Fuel Calculator — Умный калькулятор расхода топлива</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="status-bar">
+      <span class="time">10:09</span>
+      <span class="status-icons">
+        <svg width="18" height="10" viewBox="0 0 18 10" fill="none"><rect x="0" y="6" width="3" height="4" rx="1" fill="#fff"/><rect x="5" y="4" width="3" height="6" rx="1" fill="#fff"/><rect x="10" y="2" width="3" height="8" rx="1" fill="#fff"/><rect x="15" y="0" width="3" height="10" rx="1" fill="#fff"/></svg>
+        <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><path d="M8 2.5C10 2.5 11.8 3.2 13.2 4.4L14.5 3C12.7 1.4 10.4 0.5 8 0.5C5.6 0.5 3.3 1.4 1.5 3L2.8 4.4C4.2 3.2 6 2.5 8 2.5Z" fill="#fff"/><path d="M8 5.5C9.2 5.5 10.3 5.9 11.1 6.6L12.4 5.2C11.2 4.1 9.7 3.5 8 3.5C6.3 3.5 4.8 4.1 3.6 5.2L4.9 6.6C5.7 5.9 6.8 5.5 8 5.5Z" fill="#fff"/><circle cx="8" cy="9" r="1.5" fill="#fff"/></svg>
+        <svg width="26" height="11" viewBox="0 0 26 11" fill="none"><rect x="0.5" y="0.5" width="22" height="10" rx="2.5" stroke="#fff" stroke-opacity="0.6"/><rect x="2" y="2" width="19" height="7" rx="1" fill="#fff"/><rect x="23" y="3.5" width="2" height="4" rx="1" fill="#fff" fill-opacity="0.6"/></svg>
+      </span>
+    </div>
+
+    <main class="app">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="header-icon">
+          <svg viewBox="0 0 24 24" fill="none" width="22" height="22">
+            <path d="M5 3h8a2 2 0 012 2v15h-12V5a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M15 9h2a2 2 0 012 2v6a1 1 0 11-2 0v-3h-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M7 7h4M7 11h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="header-text">
+          <h1>Fuel Calculator <span class="spark">✦</span></h1>
+          <p>Умный калькулятор расхода топлива</p>
+        </div>
+      </header>
+
+      <!-- Car selector -->
+      <section class="cars-section">
+        <div class="cars-scroll" id="carsScroll"></div>
+      </section>
+
+      <!-- Transmission -->
+      <section class="control-row">
+        <span class="row-label">Коробка передач</span>
+        <div class="segmented" id="transmission">
+          <button class="seg-btn active" data-value="auto">Автомат</button>
+          <button class="seg-btn" data-value="manual">Механика</button>
+        </div>
+      </section>
+
+      <!-- Fuel type -->
+      <section class="fuel-section">
+        <h2 class="section-title">Тип топлива</h2>
+        <div class="fuel-grid" id="fuelGrid"></div>
+      </section>
+
+      <!-- Result panel -->
+      <section class="result-card">
+        <div class="headlights">
+          <div class="headlight left"></div>
+          <div class="headlight right"></div>
+        </div>
+        <div class="consumption">
+          <span class="consumption-value" id="consumptionValue">8.2</span>
+          <span class="consumption-unit">л / 100км</span>
+        </div>
+        <p class="consumption-label">Средний расход</p>
+
+        <div class="result-row">
+          <div class="result-item">
+            <span class="result-icon">📍</span>
+            <div>
+              <p class="result-key">Запас хода:</p>
+              <p class="result-value" id="rangeValue">450 км</p>
+            </div>
+          </div>
+          <div class="result-item">
+            <div>
+              <p class="result-key">Стоимость поездки:</p>
+              <p class="result-value money" id="tripCost">45 100 UZS</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="trip-input">
+          <label>Расстояние поездки</label>
+          <div class="trip-control">
+            <input type="range" id="tripDistance" min="10" max="1000" step="10" value="100" />
+            <span class="trip-value"><span id="tripDistanceValue">100</span> км</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Spec tiles -->
+      <section class="specs-grid">
+        <div class="spec">
+          <div class="spec-icon">⚙️</div>
+          <p class="spec-key">Двигатель</p>
+          <p class="spec-value" id="specEngine">1.5L</p>
+        </div>
+        <div class="spec">
+          <div class="spec-icon">⚡</div>
+          <p class="spec-key">Мощность</p>
+          <p class="spec-value" id="specPower">107 л.с.</p>
+        </div>
+        <div class="spec">
+          <div class="spec-icon">⛽</div>
+          <p class="spec-key">Объём бака</p>
+          <p class="spec-value" id="specTank">50 л</p>
+        </div>
+        <div class="spec">
+          <div class="spec-icon">📊</div>
+          <p class="spec-key">Расход</p>
+          <p class="spec-value" id="specConsumption">8.2 л/100км</p>
+        </div>
+      </section>
+
+      <div class="home-indicator"></div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
