@@ -156,37 +156,68 @@
       <!-- Spec tiles -->
       <section class="specs-grid">
         <div class="spec">
-          <div class="spec-icon">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#7fb3ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 12h2v-2h2V8h3v2h4v-2l3-1v3h2a1 1 0 011 1v4a1 1 0 01-1 1h-2v3l-3-1v-2h-4v2H7v-2H5v-2H3v-4z"/>
-              <circle cx="9" cy="9" r="0.6" fill="#7fb3ff"/>
+          <div class="spec-icon engine-ic">
+            <svg viewBox="0 0 32 32" width="24" height="24">
+              <defs>
+                <linearGradient id="engG" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#7fc8ff"/>
+                  <stop offset="100%" stop-color="#2b8cff"/>
+                </linearGradient>
+              </defs>
+              <!-- bolt on top -->
+              <rect x="13" y="3" width="6" height="3" rx="0.5" fill="url(#engG)"/>
+              <rect x="15" y="6" width="2" height="2" fill="url(#engG)"/>
+              <!-- engine body -->
+              <path d="M6 11h3V9h6v2h3l3-2v3h3a1 1 0 011 1v6a1 1 0 01-1 1h-3v3l-3-2h-3v2H9v-2H6v-2H3v-6h3z" fill="url(#engG)"/>
             </svg>
           </div>
           <p class="spec-key">Двигатель</p>
           <p class="spec-value" id="specEngine">1.5L</p>
         </div>
         <div class="spec">
-          <div class="spec-icon">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="#7fc8ff"><path d="M13 2L4 14h7l-1 8 10-12h-7l0-8z"/></svg>
+          <div class="spec-icon bolt-ic">
+            <svg viewBox="0 0 32 32" width="24" height="24">
+              <defs>
+                <linearGradient id="boltG" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#aee4ff"/>
+                  <stop offset="100%" stop-color="#3aa6ff"/>
+                </linearGradient>
+              </defs>
+              <path d="M18 3 L8 18 h6 l-2 11 L24 14 h-6 l2 -11 z" fill="url(#boltG)"/>
+            </svg>
           </div>
           <p class="spec-key">Мощность</p>
           <p class="spec-value" id="specPower">107 л.с.</p>
         </div>
         <div class="spec">
-          <div class="spec-icon">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#7fc8ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 21V5a2 2 0 012-2h6a2 2 0 012 2v16M4 21h12M7 8h6"/>
-              <path d="M15 9h2a2 2 0 012 2v6a1 1 0 102 0v-6"/>
+          <div class="spec-icon pump-ic">
+            <svg viewBox="0 0 32 32" width="24" height="24">
+              <defs>
+                <linearGradient id="pumpG" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#7fc8ff"/>
+                  <stop offset="100%" stop-color="#2b8cff"/>
+                </linearGradient>
+              </defs>
+              <!-- tank body -->
+              <path d="M7 28V8a3 3 0 013-3h7a3 3 0 013 3v20z" fill="url(#pumpG)"/>
+              <!-- inner window -->
+              <rect x="10" y="9" width="7" height="6" rx="1" fill="#0a1530" opacity="0.55"/>
+              <!-- base -->
+              <rect x="6" y="28" width="15" height="1.6" rx="0.8" fill="url(#pumpG)"/>
+              <!-- nozzle arm -->
+              <path d="M20 12h2a2 2 0 012 2v8a1.2 1.2 0 102.4 0v-8" fill="none" stroke="url(#pumpG)" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
           </div>
           <p class="spec-key">Объём бака</p>
           <p class="spec-value" id="specTank">50 л</p>
         </div>
         <div class="spec">
-          <div class="spec-icon">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#7fc8ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 21V5a2 2 0 012-2h6a2 2 0 012 2v16M4 21h12M7 8h6"/>
-              <path d="M15 9h2a2 2 0 012 2v6a1 1 0 102 0v-6"/>
+          <div class="spec-icon pump-ic">
+            <svg viewBox="0 0 32 32" width="24" height="24">
+              <path d="M7 28V8a3 3 0 013-3h7a3 3 0 013 3v20z" fill="url(#pumpG)"/>
+              <rect x="10" y="9" width="7" height="6" rx="1" fill="#0a1530" opacity="0.55"/>
+              <rect x="6" y="28" width="15" height="1.6" rx="0.8" fill="url(#pumpG)"/>
+              <path d="M20 12h2a2 2 0 012 2v8a1.2 1.2 0 102.4 0v-8" fill="none" stroke="url(#pumpG)" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
           </div>
           <p class="spec-key">Расход</p>
