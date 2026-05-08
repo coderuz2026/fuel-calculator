@@ -115,6 +115,7 @@ function renderCars() {
 
   container.querySelectorAll('.car-card').forEach((el) => {
     el.addEventListener('click', () => {
+      if (justDragged) return;
       state.carId = el.dataset.car;
       renderCars();
       update();
@@ -204,6 +205,7 @@ function bindTransmission() {
 }
 
 // ============= DRAG TO SCROLL =============
+let justDragged = false;
 function bindCarsDrag() {
   const scroller = document.getElementById('carsScroll');
   if (!scroller) return;
@@ -213,41 +215,34 @@ function bindCarsDrag() {
   let startLeft = 0;
   let moved = 0;
 
-  const start = (clientX) => {
+  scroller.addEventListener('mousedown', (e) => {
     isDown = true;
     moved = 0;
-    startX = clientX;
+    startX = e.clientX;
     startLeft = scroller.scrollLeft;
-    scroller.classList.add('dragging');
-  };
-  const move = (clientX) => {
+  });
+
+  window.addEventListener('mousemove', (e) => {
     if (!isDown) return;
-    const dx = clientX - startX;
-    moved = Math.max(moved, Math.abs(dx));
-    scroller.scrollLeft = startLeft - dx;
-  };
-  const end = () => {
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 4) {
+      moved = Math.abs(dx);
+      scroller.classList.add('dragging');
+      scroller.scrollLeft = startLeft - dx;
+    }
+  });
+
+  window.addEventListener('mouseup', () => {
     if (!isDown) return;
     isDown = false;
-    scroller.classList.remove('dragging');
-  };
-
-  // Mouse
-  scroller.addEventListener('mousedown', (e) => { start(e.clientX); });
-  window.addEventListener('mousemove', (e) => move(e.clientX));
-  window.addEventListener('mouseup', end);
-
-  // Предотвращаем click после drag
-  scroller.addEventListener('click', (e) => {
     if (moved > 6) {
-      e.stopPropagation();
-      e.preventDefault();
+      justDragged = true;
+      setTimeout(() => { justDragged = false; }, 50);
     }
-  }, true);
+    scroller.classList.remove('dragging');
+  });
 
-  // Touch работает нативно через overflow-x: auto
-
-  // Колесо мыши — листаем горизонтально
+  // Колесо мыши — горизонтальный скролл
   scroller.addEventListener('wheel', (e) => {
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       e.preventDefault();
