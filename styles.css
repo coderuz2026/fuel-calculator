@@ -167,7 +167,17 @@ body {
   padding-left: 14px;
   padding-right: 14px;
   scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  scroll-behavior: smooth;
 }
+.cars-scroll.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+.cars-scroll.dragging .car-card { pointer-events: none; }
 .cars-scroll::-webkit-scrollbar { display: none; }
 
 .car-card {

@@ -203,11 +203,65 @@ function bindTransmission() {
   });
 }
 
+// ============= DRAG TO SCROLL =============
+function bindCarsDrag() {
+  const scroller = document.getElementById('carsScroll');
+  if (!scroller) return;
+
+  let isDown = false;
+  let startX = 0;
+  let startLeft = 0;
+  let moved = 0;
+
+  const start = (clientX) => {
+    isDown = true;
+    moved = 0;
+    startX = clientX;
+    startLeft = scroller.scrollLeft;
+    scroller.classList.add('dragging');
+  };
+  const move = (clientX) => {
+    if (!isDown) return;
+    const dx = clientX - startX;
+    moved = Math.max(moved, Math.abs(dx));
+    scroller.scrollLeft = startLeft - dx;
+  };
+  const end = () => {
+    if (!isDown) return;
+    isDown = false;
+    scroller.classList.remove('dragging');
+  };
+
+  // Mouse
+  scroller.addEventListener('mousedown', (e) => { start(e.clientX); });
+  window.addEventListener('mousemove', (e) => move(e.clientX));
+  window.addEventListener('mouseup', end);
+
+  // Предотвращаем click после drag
+  scroller.addEventListener('click', (e) => {
+    if (moved > 6) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  }, true);
+
+  // Touch работает нативно через overflow-x: auto
+
+  // Колесо мыши — листаем горизонтально
+  scroller.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      scroller.scrollLeft += e.deltaY;
+    }
+  }, { passive: false });
+}
+
 // ============= INIT =============
 function init() {
   renderCars();
   renderFuels();
   bindTransmission();
+  bindCarsDrag();
   update();
 }
 
