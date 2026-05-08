@@ -70,25 +70,18 @@
 
         <div class="result-row">
           <div class="result-item">
-            <span class="result-icon">📍</span>
+            <span class="result-icon pin">📍</span>
             <div>
               <p class="result-key">Запас хода:</p>
               <p class="result-value" id="rangeValue">450 км</p>
             </div>
           </div>
           <div class="result-item">
+            <span class="result-icon money-icon">💵</span>
             <div>
               <p class="result-key">Стоимость поездки:</p>
               <p class="result-value money" id="tripCost">45 100 UZS</p>
             </div>
-          </div>
-        </div>
-
-        <div class="trip-input">
-          <label>Расстояние поездки</label>
-          <div class="trip-control">
-            <input type="range" id="tripDistance" min="10" max="1000" step="10" value="100" />
-            <span class="trip-value"><span id="tripDistanceValue">100</span> км</span>
           </div>
         </div>
       </section>
@@ -96,22 +89,30 @@
       <!-- Spec tiles -->
       <section class="specs-grid">
         <div class="spec">
-          <div class="spec-icon">⚙️</div>
+          <div class="spec-icon engine">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h2V8h4v2h2l3-2v2h3v6h-3v2l-3-2H7v-2H5v-4z"/></svg>
+          </div>
           <p class="spec-key">Двигатель</p>
           <p class="spec-value" id="specEngine">1.5L</p>
         </div>
         <div class="spec">
-          <div class="spec-icon">⚡</div>
+          <div class="spec-icon bolt">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          </div>
           <p class="spec-key">Мощность</p>
           <p class="spec-value" id="specPower">107 л.с.</p>
         </div>
         <div class="spec">
-          <div class="spec-icon">⛽</div>
+          <div class="spec-icon pump">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V5a2 2 0 012-2h6a2 2 0 012 2v16M4 21h12M7 8h6"/><path d="M15 9h2a2 2 0 012 2v6a1 1 0 102 0v-6"/></svg>
+          </div>
           <p class="spec-key">Объём бака</p>
           <p class="spec-value" id="specTank">50 л</p>
         </div>
         <div class="spec">
-          <div class="spec-icon">📊</div>
+          <div class="spec-icon pump">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V5a2 2 0 012-2h6a2 2 0 012 2v16M4 21h12M7 8h6"/><path d="M15 9h2a2 2 0 012 2v6a1 1 0 102 0v-6"/></svg>
+          </div>
           <p class="spec-key">Расход</p>
           <p class="spec-value" id="specConsumption">8.2 л/100км</p>
         </div>
