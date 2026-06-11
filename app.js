@@ -1,5 +1,5 @@
 // ============= DATA =============
-const PUMP_SVG = `<svg viewBox="0 0 28 28" width="24" height="24" fill="#fff">
+const PUMP_SVG = `<svg viewBox="0 0 28 28" width="24" height="24" fill="#fff"> 
   <path d="M7 26V8.5C7 6 8.8 4 11.2 4h5.6C19.2 4 21 6 21 8.5V26z"/>
   <rect x="9" y="12.5" width="10" height="2" rx="0.6" fill="#1a3a6a"/>
   <rect x="5.5" y="25" width="17" height="2" rx="1"/>
